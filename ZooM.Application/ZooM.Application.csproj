@@ -1,7 +1,31 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Commands\Animals\" />
+    <Folder Include="Commands\Employees\" />
+    <Folder Include="Commands\AnimalActions\" />
+    <Folder Include="DTO\" />
+    <Folder Include="Events\AnimalActions\" />
+    <Folder Include="Events\Animals\" />
+    <Folder Include="Events\Employees\" />
+    <Folder Include="Exceptions\" />
+    <Folder Include="Queries\AnimalActions\" />
+    <Folder Include="Queries\Animals\" />
+    <Folder Include="Queries\Employees\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Scrutor" Version="3.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions">
+      <HintPath>C:\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.extensions.dependencyinjection.abstractions\2.1.1\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+  </ItemGroup>
 
 </Project>

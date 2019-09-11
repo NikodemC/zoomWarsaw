@@ -3,15 +3,26 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29230.47
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZooM.Api", "ZooM\ZooM.Api.csproj", "{37F9F8D3-79E8-45C6-A0CD-DAFB0F20DBEB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZooM.Api", "ZooM\ZooM.Api.csproj", "{37F9F8D3-79E8-45C6-A0CD-DAFB0F20DBEB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{612E6043-DB19-423D-B173-108CE85CEF54} = {612E6043-DB19-423D-B173-108CE85CEF54}
+		{4F2A5FF6-F3C6-439B-9196-CD1901C2A353} = {4F2A5FF6-F3C6-439B-9196-CD1901C2A353}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{44ECD3BD-B915-46CE-9818-822CD2870A0E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZooM.Application", "ZooM.Application\ZooM.Application.csproj", "{4F2A5FF6-F3C6-439B-9196-CD1901C2A353}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZooM.Application", "ZooM.Application\ZooM.Application.csproj", "{4F2A5FF6-F3C6-439B-9196-CD1901C2A353}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4018FD36-8342-47B5-B0B7-112BD33E3C89} = {4018FD36-8342-47B5-B0B7-112BD33E3C89}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZooM.Core", "ZooM.Core\ZooM.Core.csproj", "{4018FD36-8342-47B5-B0B7-112BD33E3C89}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZooM.Core", "ZooM.Core\ZooM.Core.csproj", "{4018FD36-8342-47B5-B0B7-112BD33E3C89}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZooM.Infrastructure", "ZooM.Infrastructure\ZooM.Infrastructure.csproj", "{612E6043-DB19-423D-B173-108CE85CEF54}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZooM.Infrastructure", "ZooM.Infrastructure\ZooM.Infrastructure.csproj", "{612E6043-DB19-423D-B173-108CE85CEF54}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4018FD36-8342-47B5-B0B7-112BD33E3C89} = {4018FD36-8342-47B5-B0B7-112BD33E3C89}
+		{4F2A5FF6-F3C6-439B-9196-CD1901C2A353} = {4F2A5FF6-F3C6-439B-9196-CD1901C2A353}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

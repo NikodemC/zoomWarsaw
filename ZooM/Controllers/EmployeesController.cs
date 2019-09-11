@@ -8,7 +8,7 @@ namespace ZooM.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ValuesController : ControllerBase
+    public class EmployeesController : ControllerBase
     {
         // GET api/values
         [HttpGet]
