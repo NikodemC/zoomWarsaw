@@ -6,13 +6,13 @@ namespace ZooM.Core.Entitites
 {
     public class Area
     {
-        public int Id { get; }
+        public int AreaNo { get; }
         public IEnumerable<int> Cages => _cages;
         private readonly List<int> _cages;
 
-        public Area(int id, IEnumerable<int> cages)
+        public Area(int no, IEnumerable<int> cages)
         {
-            Id = id;
+            AreaNo = no;
             _cages = cages?.ToList() ?? new List<int>();
         }
 
