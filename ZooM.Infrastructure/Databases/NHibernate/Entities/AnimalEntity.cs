@@ -10,7 +10,8 @@ namespace ZooM.Infrastructure.Databases.NHibernate.Entities
         public virtual AnimalType Type { get; set; }
         public virtual decimal Weight { get; set; }
         public virtual int YearOfBirth { get; set; }
-        public virtual int AreaNo { get; set; }
+        public virtual Guid AreaId { get; set; }
+        public virtual AreaType AreaType { get; set; }
         public virtual int CageNo { get; set; }
     }
 }

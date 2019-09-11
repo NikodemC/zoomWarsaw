@@ -14,8 +14,13 @@ namespace ZooM.Infrastructure.Databases.NHibernate.Entities.Mappings
             Property(a => a.Type, a => a.Type<EnumStringType<AnimalType>>());
             Property(a => a.Weight);
             Property(a => a.YearOfBirth);
-            Property(a => a.AreaNo);
+            Property(a => a.AreaId);
+            Property(a => a.AreaType, a => a.Type<EnumStringType<AreaType>>());
             Property(a => a.CageNo);
+            Property(a => a.IsDeleted, map => {
+                map.NotNullable(true);
+                map.Type<YesNoType>();
+            });
         }
     }
 }
