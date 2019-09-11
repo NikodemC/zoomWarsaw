@@ -10,17 +10,19 @@ namespace ZooM.Infrastructure.Databases.NHibernate.Entities.Extensions
         public static AreaEntity AsEntity(this Area area)
             => new AreaEntity
             {
-                AreaNo = area.AreaNo,
+                Id = area.Id,
+                AreaType = area.AreaType,
                 Cages = area.Cages
             };
 
         public static Area AsArea(this AreaEntity entity)
-            => new Area(entity.AreaNo, entity.Cages);
+            => new Area(entity.Id, entity.AreaType, entity.Cages);
 
         public static AreaDto AsDto(this AreaEntity entity)
             => new AreaDto
             {
-                AreaNo = entity.AreaNo,
+                Id = entity.Id,
+                AreaType = entity.AreaType,
                 Cages = entity.Cages
             };
 

@@ -11,10 +11,11 @@ namespace ZooM.Core.Entitites
         public AnimalType Type { get; }
         public decimal Weight { get; private set; }
         public int YearOfBirth { get; }
-        public int AreaNo { get; private set; }
+        public Guid AreaId { get; private set; }
+        public AreaType AreaType { get; private set; }
         public int CageNo { get; private set; }
 
-        public Animal(Guid id, string avatar, string name, AnimalType type, decimal weight, int yearOfBirth, int areaNo, int cageNo)
+        public Animal(Guid id, string avatar, string name, AnimalType type, decimal weight, int yearOfBirth, Guid areaId, AreaType areaType, int cageNo)
         {
             Id = id;
             Avatar = avatar;
@@ -22,7 +23,8 @@ namespace ZooM.Core.Entitites
             Type = type;
             Weight = weight;
             YearOfBirth = yearOfBirth;
-            AreaNo = areaNo;
+            AreaId = areaId;
+            AreaType = areaType;
             CageNo = cageNo;
         }
 
@@ -32,9 +34,10 @@ namespace ZooM.Core.Entitites
         public void ChangeAvatar(string avatar)
             => Avatar = avatar;
 
-        public void ChangeCage(int areaNo, int cageNo)
+        public void ChangeCage(Guid areaId, AreaType areaType, int cageNo)
         {
-            AreaNo = areaNo;
+            AreaId = areaId;
+            AreaType = areaType;
             CageNo = cageNo;
         }
     }

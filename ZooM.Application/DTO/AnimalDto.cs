@@ -11,7 +11,8 @@ namespace ZooM.Application.DTO
         public AnimalType Type { get; set; }
         public decimal Weight { get; set; }
         public int YearOfBirth { get; set; }
-        public int AreaNo { get; set; }
+        public Guid AreaId { get; set; }
+        public AreaType AreaType { get; set; }
         public int CageNo { get; set; }
     }
 }

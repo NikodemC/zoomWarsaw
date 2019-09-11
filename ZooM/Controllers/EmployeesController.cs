@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using ZooM.Api;
+using ZooM.Application.Commands.Dispatchers;
+using ZooM.Application.Commands.Employees;
+using ZooM.Application.DTO;
+using ZooM.Application.Queries.Dispatchers;
+using ZooM.Application.Queries.Employees;
 
 namespace ZooM.Controllers
 {
@@ -10,36 +16,56 @@ namespace ZooM.Controllers
     [ApiController]
     public class EmployeesController : ControllerBase
     {
-        // GET api/values
+        private readonly ICommandDispatcher _commandDispatcher;
+        private readonly IQueryDispatcher _queryDispatcher;
+
+        public EmployeesController(ICommandDispatcher dispatcher, IQueryDispatcher queryDispatcher)
+        {
+            _commandDispatcher = dispatcher;
+            _queryDispatcher = queryDispatcher;
+        }
+
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public async Task<ActionResult<IEnumerable<EmployeeDto>>> SearchAsync([FromQuery] SearchEmployees query)
         {
-            return new string[] { "value1", "value2" };
+            var result = await _queryDispatcher
+                .DispatchAsync<SearchEmployees, IEnumerable<EmployeeDto>>(query);
+
+            if (result is null || !result.Any()) return NotFound();
+
+            return Ok(result);
         }
 
-        // GET api/values/5
         [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+        public async Task<ActionResult<EmployeeDto>> GetByIdAsync([FromRoute] GetEmployee query)
         {
-            return "value";
+            var result = await _queryDispatcher.DispatchAsync<GetEmployee, EmployeeDto>(query);
+
+            if (result is null) return NotFound();
+
+            return Ok(result);
         }
 
-        // POST api/values
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<IActionResult> CreateEmployeeAsync([FromBody] CreateEmployee command)
         {
+            await _commandDispatcher.DispatchAsync(command);
+            return CreatedAtAction(nameof(GetByIdAsync), new { id = command.Id }, command);
         }
 
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/values/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task<IActionResult> DeleteAsync([FromRoute] Guid id)
         {
+            await _commandDispatcher.DispatchAsync(new DeleteEmployee(id));
+            return Ok();
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateAsync([FromRoute] Guid id, [FromBody] UpdateEmployee command)
+        {
+            command.Bind(cmd => cmd.Id, id);
+            await _commandDispatcher.DispatchAsync(command);
+            return Ok();
         }
     }
 }

@@ -13,6 +13,10 @@ namespace ZooM.Infrastructure.Databases.NHibernate.Entities.Mappings
             Property(aa => aa.TimeOfAction, map => map.Type<DateTimeType>());
             Property(aa => aa.AnimalId);
             Property(aa => aa.EmployeeId);
+            Property(aa => aa.IsDeleted, map => {
+                map.NotNullable(true);
+                map.Type<YesNoType>();
+            });
         }
     }
 }

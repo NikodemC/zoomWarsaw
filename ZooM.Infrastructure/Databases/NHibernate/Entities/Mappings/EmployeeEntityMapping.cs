@@ -13,6 +13,10 @@ namespace ZooM.Infrastructure.Databases.NHibernate.Entities.Mappings
             Property(e => e.Position, e => e.Type<EnumStringType<Position>>());
             Property(e => e.Avatar);
             Property(e => e.YearOfBirth);
+            Property(e => e.IsDeleted, map => {
+                map.NotNullable(true);
+                map.Type<YesNoType>();
+            });
         }
     }
 }
