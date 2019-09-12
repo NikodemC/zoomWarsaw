@@ -19,7 +19,7 @@ namespace ZooM.Infrastructure.Queries.Handlers.Employee
 
         public async Task<IEnumerable<EmployeeDto>> HandleAsync(SearchEmployees query)
         {
-            var entities = await _repository.SearchAsync(e => !query.Position.HasValue || e.Position == query.Position);
+            var entities = await _repository.SearchAsync(e => !query.Position.HasValue || e.Name.ToLower().StartsWith(query.Position.ToString().ToLower()));
 
             if (query.YearOfBirth != null)
                 entities = entities.Where(e => e.YearOfBirth <= query.YearOfBirth);
