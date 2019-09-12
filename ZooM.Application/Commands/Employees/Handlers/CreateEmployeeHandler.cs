@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using ZooM.Application.Events.Employees;
 using ZooM.Application.Exceptions.Employee;
 using ZooM.Application.Services;
 using ZooM.Core.Entitites;
@@ -28,8 +29,9 @@ namespace ZooM.Application.Commands.Employees.Handlers
             }
 
             var newEmployee = new Employee(command.Id, command.Avatar, command.Name, command.Position, command.YearOfBirth);
-            await _repository.AddAsync(newEmployee);
 
+            await _repository.AddAsync(newEmployee);
+            await _broker.PublishAsync(new EmployeeCreated(command.Id));
         }
     }
 }

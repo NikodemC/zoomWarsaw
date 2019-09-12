@@ -1,6 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using RabbitMQ.Client;
 using ZooM.Infrastructure.Options;
+using ZooM.Infrastructure.RabbitMq.Publisher;
+using ZooM.Infrastructure.RabbitMq.Subscriber;
 
 namespace ZooM.Infrastructure.RabbitMq
 {

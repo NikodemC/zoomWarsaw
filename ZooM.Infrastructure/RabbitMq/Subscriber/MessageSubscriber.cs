@@ -1,12 +1,12 @@
-﻿using Newtonsoft.Json;
-using RabbitMQ.Client;
-using RabbitMQ.Client.Events;
-using System;
+﻿using System;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
+using RabbitMQ.Client;
+using RabbitMQ.Client.Events;
 using ZooM.Infrastructure.Options;
 
-namespace ZooM.Infrastructure.RabbitMq
+namespace ZooM.Infrastructure.RabbitMq.Subscriber
 {
     internal class MessageSubscriber : IMessageSubscriber
     {

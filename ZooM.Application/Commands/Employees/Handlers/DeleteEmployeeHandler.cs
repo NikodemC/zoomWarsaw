@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using ZooM.Application.Events.Employees;
 using ZooM.Application.Exceptions.Employee;
 using ZooM.Application.Services;
 using ZooM.Core.Repositories;
@@ -25,6 +26,7 @@ namespace ZooM.Application.Commands.Employees.Handlers
                 throw new EmployeeDoesntExistException(command.Id);
             }
             await _repository.DeleteAsync(employee);
+            await _broker.PublishAsync(new EmployeeDeleted(command.Id));
         }
     }
 }

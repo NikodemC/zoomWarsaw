@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace ZooM.Infrastructure.RabbitMq
+namespace ZooM.Infrastructure.RabbitMq.Publisher
 {
     public interface IMessagePublisher
     {
