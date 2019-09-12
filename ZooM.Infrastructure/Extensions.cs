@@ -6,6 +6,7 @@ using ZooM.Infrastructure.Dispatchers;
 using ZooM.Infrastructure.IoC;
 using ZooM.Infrastructure.Queries.Handlers;
 using ZooM.Infrastructure.RabbitMq;
+using ZooM.Infrastructure.RabbitMq.Subscriber;
 using ZooM.Infrastructure.Repositories;
 using ZooM.Infrastructure.Services;
 using ZooM.Infrastructure.Swagger;
@@ -18,16 +19,19 @@ namespace ZooM.Infrastructure
         {
             services.AddDispatchers();
             services.AddQueryHandlers();
+            services.AddDecorators();
             services.AddRepositories();
             services.AddDatabase();
-            services.AddDecorators();
             services.AddSwagger();
-            services.AddRabbitMq();
             services.AddTransient<IMessageBroker, MessageBroker>();
+            services.AddRabbitMq();
         }
         public static void UseInfrastructure(this IApplicationBuilder app)
         {
             app.UseSwaggerExtension();
+
+            var subscriber = app.ApplicationServices.GetService<IMessageSubscriber>();
+            subscriber.SubscribeEvents();
         }
 }
 

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace ZooM.Infrastructure.RabbitMq
+namespace ZooM.Infrastructure.RabbitMq.Subscriber
 {
     internal interface IMessageSubscriber
     {

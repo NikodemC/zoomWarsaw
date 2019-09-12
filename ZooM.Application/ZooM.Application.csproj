@@ -9,7 +9,6 @@
     <Folder Include="Commands\AnimalActions\" />
     <Folder Include="Events\AnimalActions\" />
     <Folder Include="Events\Animals\" />
-    <Folder Include="Events\Employees\" />
     <Folder Include="Queries\AnimalActions\" />
     <Folder Include="Queries\Animals\" />
   </ItemGroup>
