@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ZooM.Application.DTO;
@@ -19,10 +20,12 @@ namespace ZooM.Infrastructure.Queries.Handlers.Employee
 
         public async Task<IEnumerable<EmployeeDto>> HandleAsync(SearchEmployees query)
         {
-            var entities = await _repository.SearchAsync(e => !query.Position.HasValue || e.Name.ToLower().StartsWith(query.Position.ToString().ToLower()));
+            var entities = await _repository.SearchAsync(e => !query.Position.HasValue || e.Position == query.Position);
 
             if (query.YearOfBirth != null)
                 entities = entities.Where(e => e.YearOfBirth <= query.YearOfBirth);
+
+            entities = entities.Where(d => String.IsNullOrEmpty(query.Name) || d.Name.ToLower().StartsWith(query.Name.ToLower()));
 
             return entities.AsDtos();
         }
