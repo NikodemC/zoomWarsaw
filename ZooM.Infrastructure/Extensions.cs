@@ -7,6 +7,7 @@ using ZooM.Infrastructure.IoC;
 using ZooM.Infrastructure.Queries.Handlers;
 using ZooM.Infrastructure.Repositories;
 using ZooM.Infrastructure.Services;
+using ZooM.Infrastructure.Swagger;
 
 namespace ZooM.Infrastructure
 {
@@ -19,11 +20,12 @@ namespace ZooM.Infrastructure
             services.AddRepositories();
             services.AddDatabase();
             services.AddDecorators();
+            services.AddSwagger();
             services.AddTransient<IMessageBroker, MessageBroker>();
         }
         public static void UseInfrastructure(this IApplicationBuilder app)
         {
-
+            app.UseSwaggerExtension();
         }
 }
 
