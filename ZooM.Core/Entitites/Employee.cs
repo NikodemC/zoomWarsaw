@@ -22,7 +22,7 @@ namespace ZooM.Core.Entitites
 
         public void ChangePosition(Position position)
          => Position = position;
-        
+
 
         public void ChangeAvatar(string avatar)
             => Avatar = avatar;

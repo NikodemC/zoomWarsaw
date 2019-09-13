@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
+using System.Collections.Generic;
 using ZooM.Application.DTO;
 using ZooM.Application.Queries;
 using ZooM.Application.Queries.Employees;
