@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Hosting;
 
 namespace ZooM.Api
-{
+{ 
     public class Program
     {
         public static void Main(string[] args)
