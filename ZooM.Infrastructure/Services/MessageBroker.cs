@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using ZooM.Application.Events;
 using ZooM.Application.Services;
-using ZooM.Infrastructure.RabbitMq;
 using ZooM.Infrastructure.RabbitMq.CQRS;
 using ZooM.Infrastructure.RabbitMq.Publisher;
 

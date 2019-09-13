@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using ZooM.Core.Enums;
 
 namespace ZooM.Infrastructure.Databases.NHibernate.Entities

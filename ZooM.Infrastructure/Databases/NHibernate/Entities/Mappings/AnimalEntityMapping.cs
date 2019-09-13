@@ -17,7 +17,8 @@ namespace ZooM.Infrastructure.Databases.NHibernate.Entities.Mappings
             Property(a => a.AreaId);
             Property(a => a.AreaType, a => a.Type<EnumStringType<AreaType>>());
             Property(a => a.CageNo);
-            Property(a => a.IsDeleted, map => {
+            Property(a => a.IsDeleted, map =>
+            {
                 map.NotNullable(true);
                 map.Type<YesNoType>();
             });
