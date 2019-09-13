@@ -8,7 +8,8 @@ namespace ZooM.Infrastructure.Databases.NHibernate.Entities.Extensions
     internal static class EmployeeExtensions
     {
         public static EmployeeEntity AsEntity(this Employee employee)
-            => new EmployeeEntity
+        {
+            return new EmployeeEntity
             {
                 Id = employee.Id,
                 Avatar = employee.Avatar,
@@ -16,12 +17,16 @@ namespace ZooM.Infrastructure.Databases.NHibernate.Entities.Extensions
                 Position = employee.Position,
                 YearOfBirth = employee.YearOfBirth
             };
+        }
 
         public static Employee AsEmployee(this EmployeeEntity entity)
-            => new Employee(entity.Id, entity.Avatar, entity.Name, entity.Position, entity.YearOfBirth);
+        {
+            return new Employee(entity.Id, entity.Avatar, entity.Name, entity.Position, entity.YearOfBirth);
+        }
 
         public static EmployeeDto AsDto(this EmployeeEntity entity)
-            => new EmployeeDto
+        {
+            return new EmployeeDto
             {
                 Id = entity.Id,
                 Avatar = entity.Avatar,
@@ -29,8 +34,11 @@ namespace ZooM.Infrastructure.Databases.NHibernate.Entities.Extensions
                 Position = entity.Position,
                 YearOfBirth = entity.YearOfBirth
             };
+        }
 
         public static IEnumerable<EmployeeDto> AsDtos(this IEnumerable<EmployeeEntity> employees)
-            => employees.Select(a => a.AsDto());
+        {
+            return employees.Select(a => a.AsDto());
+        }
     }
 }

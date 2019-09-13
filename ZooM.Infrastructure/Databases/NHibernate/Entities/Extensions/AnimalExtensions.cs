@@ -8,7 +8,8 @@ namespace ZooM.Infrastructure.Databases.NHibernate.Entities.Extensions
     internal static class AnimalExtensions
     {
         public static AnimalEntity AsEntity(this Animal animal)
-            => new AnimalEntity
+        {
+            return new AnimalEntity
             {
                 Id = animal.Id,
                 Avatar = animal.Avatar,
@@ -20,12 +21,17 @@ namespace ZooM.Infrastructure.Databases.NHibernate.Entities.Extensions
                 AreaType = animal.AreaType,
                 CageNo = animal.CageNo
             };
+        }
 
         public static Animal AsAnimal(this AnimalEntity entity)
-        => new Animal(entity.Id, entity.Avatar, entity.Name, entity.Type, entity.Weight, entity.YearOfBirth, entity.AreaId, entity.AreaType, entity.CageNo);
+        {
+            return new Animal(entity.Id, entity.Avatar, entity.Name, entity.Type, entity.Weight, entity.YearOfBirth,
+                entity.AreaId, entity.AreaType, entity.CageNo);
+        }
 
         public static AnimalDto AsDto(this AnimalEntity entity)
-            => new AnimalDto
+        {
+            return new AnimalDto
             {
                 Id = entity.Id,
                 Avatar = entity.Avatar,
@@ -36,8 +42,11 @@ namespace ZooM.Infrastructure.Databases.NHibernate.Entities.Extensions
                 AreaType = entity.AreaType,
                 CageNo = entity.CageNo
             };
+        }
 
         public static IEnumerable<AnimalDto> AsDtos(this IEnumerable<AnimalEntity> animals)
-            => animals.Select(a => a.AsDto());
+        {
+            return animals.Select(a => a.AsDto());
+        }
     }
 }

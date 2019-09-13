@@ -38,6 +38,8 @@ namespace ZooM.Infrastructure.Databases.NHibernate
         }
 
         public ISession OpenSession()
-            => _sessionFactory.OpenSession();
+        {
+            return _sessionFactory.OpenSession();
+        }
     }
 }
