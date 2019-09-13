@@ -8,7 +8,8 @@ namespace ZooM.Infrastructure.Databases.NHibernate.Entities.Extensions
     internal static class AnimalActionExtensions
     {
         public static AnimalActionEntity AsEntity(this AnimalAction aa)
-            => new AnimalActionEntity
+        {
+            return new AnimalActionEntity
             {
                 Id = aa.Id,
                 TimeOfAction = aa.TimeOfAction,
@@ -16,12 +17,16 @@ namespace ZooM.Infrastructure.Databases.NHibernate.Entities.Extensions
                 Action = aa.Action,
                 AnimalId = aa.AnimalId
             };
+        }
 
         public static AnimalAction AsAnimalAction(this AnimalActionEntity entity)
-            => new AnimalAction(entity.Id, entity.TimeOfAction, entity.EmployeeId, entity.Action, entity.AnimalId);
+        {
+            return new AnimalAction(entity.Id, entity.TimeOfAction, entity.EmployeeId, entity.Action, entity.AnimalId);
+        }
 
         public static AnimalActionDto AsDto(this AnimalActionEntity entity)
-            => new AnimalActionDto
+        {
+            return new AnimalActionDto
             {
                 Id = entity.Id,
                 TimeOfAction = entity.TimeOfAction,
@@ -29,8 +34,11 @@ namespace ZooM.Infrastructure.Databases.NHibernate.Entities.Extensions
                 Action = entity.Action,
                 AnimalId = entity.AnimalId
             };
+        }
 
         public static IEnumerable<AnimalActionDto> AsDtos(this IEnumerable<AnimalActionEntity> aas)
-            => aas.Select(a => a.AsDto());
+        {
+            return aas.Select(a => a.AsDto());
+        }
     }
 }

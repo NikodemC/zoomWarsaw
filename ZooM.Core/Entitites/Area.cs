@@ -8,9 +8,6 @@ namespace ZooM.Core.Entitites
 {
     public class Area
     {
-        public Guid Id { get; }
-        public AreaType AreaType { get; }
-        public IEnumerable<int> Cages => _cages;
         private readonly List<int> _cages;
 
         public Area(Guid id, AreaType areaType, IEnumerable<int> cages)
@@ -19,6 +16,10 @@ namespace ZooM.Core.Entitites
             AreaType = areaType;
             _cages = cages?.ToList() ?? new List<int>();
         }
+
+        public Guid Id { get; }
+        public AreaType AreaType { get; }
+        public IEnumerable<int> Cages => _cages;
 
         public void AddCage(int cageNo)
         {
