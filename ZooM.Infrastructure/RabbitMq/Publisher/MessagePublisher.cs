@@ -1,7 +1,7 @@
-﻿using System.Text;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using RabbitMQ.Client;
+using System.Text;
+using System.Threading.Tasks;
 using ZooM.Infrastructure.Options;
 
 namespace ZooM.Infrastructure.RabbitMq.Publisher

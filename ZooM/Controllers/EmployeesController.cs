@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using ZooM.Api;
 using ZooM.Application.Commands.Dispatchers;
 using ZooM.Application.Commands.Employees;
 using ZooM.Application.DTO;
 using ZooM.Application.Queries.Dispatchers;
 using ZooM.Application.Queries.Employees;
 
-namespace ZooM.Controllers
+namespace ZooM.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

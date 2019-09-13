@@ -5,7 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using ZooM.Application;
 using ZooM.Infrastructure;
 
-namespace ZooM
+namespace ZooM.Api
 {
     public class Startup
     {
@@ -31,7 +31,7 @@ namespace ZooM
             });
         }
 
- 
+
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             app.UseCors(option =>

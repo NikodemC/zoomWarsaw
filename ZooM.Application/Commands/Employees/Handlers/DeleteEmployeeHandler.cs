@@ -8,8 +8,8 @@ namespace ZooM.Application.Commands.Employees.Handlers
 {
     internal class DeleteEmployeeHandler : ICommandHandler<DeleteEmployee>
     {
-        private readonly IEmployeeRepository _repository;
         private readonly IMessageBroker _broker;
+        private readonly IEmployeeRepository _repository;
 
         public DeleteEmployeeHandler(IEmployeeRepository repository, IMessageBroker broker)
         {
@@ -21,10 +21,8 @@ namespace ZooM.Application.Commands.Employees.Handlers
         {
             var employee = await _repository.GetAsync(command.Id);
 
-            if (employee is null)
-            {
-                throw new EmployeeDoesntExistException(command.Id);
-            }
+            if (employee is null) throw new EmployeeDoesntExistException(command.Id);
+
             await _repository.DeleteAsync(employee);
             await _broker.PublishAsync(new EmployeeDeleted(command.Id));
         }

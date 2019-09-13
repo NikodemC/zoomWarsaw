@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using ZooM.Application.Events.Employees;
 using ZooM.Application.Exceptions.Employee;
 using ZooM.Application.Services;
@@ -37,7 +34,7 @@ namespace ZooM.Application.Commands.Employees.Handlers
             {
                 employee.ChangePosition(command.Position.Value);
             }
-            
+
             await _repository.UpdateAsync(employee);
             await _broker.PublishAsync(new EmployeeUpdated(command.Id));
         }

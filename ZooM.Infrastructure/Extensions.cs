@@ -33,6 +33,6 @@ namespace ZooM.Infrastructure
             var subscriber = app.ApplicationServices.GetService<IMessageSubscriber>();
             subscriber.SubscribeEvents();
         }
-}
+    }
 
 }

@@ -7,11 +7,10 @@ using ZooM.Core.Repositories;
 
 namespace ZooM.Application.Commands.Employees.Handlers
 {
-
     internal class CreateEmployeeHandler : ICommandHandler<CreateEmployee>
     {
-        private readonly IEmployeeRepository _repository;
         private readonly IMessageBroker _broker;
+        private readonly IEmployeeRepository _repository;
 
         public CreateEmployeeHandler(IEmployeeRepository repository, IMessageBroker broker)
         {
@@ -21,14 +20,14 @@ namespace ZooM.Application.Commands.Employees.Handlers
 
         public async Task HandleAsync(CreateEmployee command)
         {
-            var deliverer = await _repository.GetAsync(command.Id);
+            var employee = await _repository.GetAsync(command.Id);
 
-            if (deliverer != null)
-            {
-                throw new EmployeeAlreadyExistException(command.Id);
-            }
+            if (employee != null) throw new EmployeeAlreadyExistException(command.Id);
 
-            var newEmployee = new Employee(command.Id, command.Avatar, command.Name, command.Position, command.YearOfBirth);
+            if (command.YearOfBirth > 2001 || command.YearOfBirth < 1930) throw new WrongDateException(command.YearOfBirth);
+
+            var newEmployee = new Employee(command.Id, command.Avatar, command.Name, command.Position,
+                command.YearOfBirth);
 
             await _repository.AddAsync(newEmployee);
             await _broker.PublishAsync(new EmployeeCreated(command.Id));
